@@ -1,0 +1,83 @@
+body {
+  background-color: #0a0a23;
+}
+
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  border: 3px solid #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  background-color: #feac32;
+}
+
+.game-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#adventurer {
+  color: black;
+}
+
+.adventurer-image {
+  height: 9.5rem;
+  width: 9.5rem;
+  margin-bottom: 1rem;
+  background-color: red;
+}
+
+#stats {
+  display: flex;
+  flex-direction: column;
+}
+
+#text {
+  padding: 10px;
+  color: #ffffff;
+  background-color: #0a0a23;
+}
+
+#game-stats,
+#game-info {
+  max-width: 500px;
+  max-height: 800px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding: 10px;
+  color: #ffffff;
+  background-color: #ffffff;
+}
+
+.main-content-image {
+  display: flex;
+  gap: 1rem;
+  height: 20rem;
+  width: 20rem;
+  padding-bottom: 1rem;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
+
+#controls,
+#stats {
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #0a0a23;
+}
+
+#monsterStats {
+  display: none;
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #c70d0d;
+}
+
+.stat {
+  padding-right: 10px;
+}

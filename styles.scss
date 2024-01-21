@@ -1,0 +1,166 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0a0a23;
+}
+
+button {
+  width: 10rem;
+  height: 2rem;
+  cursor: pointer;
+  color: #0a0a23;
+  border: 3px solid #feac32;
+  border-radius: 0.4rem;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  background-color: #feac32;
+}
+
+.game-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  #game-stats {
+    max-width: 600px;
+    max-height: 600px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    background-color: #ffffff;
+
+    #adventurer {
+      color: black;
+
+      .adventurer-image {
+        overflow: hidden;
+        height: 10rem;
+        width: 10rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        background-color: red;
+        border-radius: 0.5rem;
+
+        img {
+          object-fit: cover;
+        }
+      }
+    }
+
+    #stats {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #0a0a23;
+      padding: 5px;
+      border-radius: 0.5rem;
+      color: #0a0a23;
+
+      .stat {
+        padding-right: 10px;
+      }
+    }
+  }
+
+  #game-info {
+    max-width: 50rem;
+    max-height: 35rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    background-color: #ffffff;
+
+    .main-content-action {
+      display: flex;
+      gap: 1rem;
+      max-width: 100%;
+      max-height: 100%;
+      padding-bottom: 1rem;
+      color: #ffffff;
+
+      .main-content-image {
+        overflow: hidden;
+        border-radius: 0.5rem;
+
+        img {
+          object-fit: cover;
+        }
+
+        .town-square {
+          display: block;
+        }
+
+        .town-store {
+          display: none;
+        }
+
+        .explore {
+          display: none;
+        }
+
+        .fighting {
+          display: none;
+        }
+      }
+
+      #controls {
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        gap: 1rem;
+        width: 100%;
+        border: 1px solid #0a0a23;
+        padding: 5px;
+        border-radius: 0.5rem;
+        color: #0a0a23;
+        background-color: #ffffff;
+      }
+    }
+
+    .main-content-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      #monsterStats {
+        display: none;
+        border: 1px solid #0a0a23;
+        padding: 5px;
+        border-radius: 0.5rem;
+        color: #ffffff;
+        background-color: #c70d0d;
+      }
+
+      #text {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        color: #ffffff;
+        background-color: #0a0a23;
+      }
+    }
+  }
+
+  #inventory {
+    height: 330px;
+    width: 180px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #ffffff;
+  }
+}

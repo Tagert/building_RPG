@@ -21,7 +21,7 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button text": ["Go to store", "Go to explore", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: 'You are in the town square. You see a sign that says "Store".',
   },
@@ -81,17 +81,29 @@ const locations = [
 let fighting;
 let monsterHealth;
 let inventory = ["stick"];
-
+// buttons
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
+const button4 = document.querySelector("#button4");
+// adventurer stats
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
+// monsters stats
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+// images
+const squareImage = document.querySelector(".town-square");
+const storeImage = document.querySelector(".town-store");
+const exploreImage = document.querySelector(".explore");
+const fightingImage = document.querySelector(".fighting");
+// inventory
+const inventoryBoxElement = document.querySelector(".inventory-box");
+
+console.log();
 
 function update(location) {
   monsterStats.style.display = "none";
@@ -106,10 +118,18 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  squareImage.style.display = "block";
+  storeImage.style.display = "none";
+  exploreImage.style.display = "none";
+  fightingImage.style.display = "none";
 }
 
 function goStore() {
   update(locations[1]);
+  squareImage.style.display = "none";
+  storeImage.style.display = "block";
+  exploreImage.style.display = "none";
+  fightingImage.style.display = "none";
 }
 
 function buyHealth() {
@@ -155,8 +175,19 @@ function sellWeapon() {
   }
 }
 
+function getInventory() {
+  const inventoryList = document.createElement("p");
+  inventoryBoxElement.append(inventoryList);
+  console.log(inventoryBoxElement);
+  inventoryList.textContent = inventory;
+}
+
 function goCave() {
   update(locations[2]);
+  squareImage.style.display = "none";
+  storeImage.style.display = "none";
+  exploreImage.style.display = "block";
+  fightingImage.style.display = "none";
 }
 
 function goFight() {
@@ -165,6 +196,10 @@ function goFight() {
   monsterStats.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsters[fighting].health;
+  squareImage.style.display = "none";
+  storeImage.style.display = "none";
+  exploreImage.style.display = "none";
+  fightingImage.style.display = "block";
 }
 
 function fightSlime() {
@@ -287,3 +322,4 @@ function pickEight() {
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
+button4.onclick = getInventory;

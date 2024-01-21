@@ -6,38 +6,90 @@
     <title>RPG - Dragon Repeller</title>
   </head>
   <body>
-    <div id="game">
-      <div id="stats">
-        <span class="stat"
-          >XP: <strong><span id="xpText">0</span></strong></span
-        >
-        <span class="stat"
-          >Health: <strong><span id="healthText">100</span></strong></span
-        >
-        <span class="stat"
-          >Gold: <strong><span id="goldText">50</span></strong></span
-        >
+    <div class="game-container">
+      <div id="game-stats">
+        <div id="adventurer">
+          <div class="adventurer-description">
+            <p>Welcome adventurer</p>
+          </div>
+          <div class="adventurer-image">
+            <img src="./assets/image/warrior.png" alt="" />
+          </div>
+        </div>
+
+        <div id="stats">
+          <span class="stat"
+            >Health: <strong><span id="healthText">100</span></strong></span
+          >
+          <span class="stat"
+            >Level: <strong><span id="levelText">1</span></strong></span
+          >
+          <span class="stat"
+            >XP: <strong><span id="xpText">0</span></strong></span
+          >
+          <span class="stat"
+            >Gold: <strong><span id="goldText">50</span></strong></span
+          >
+        </div>
       </div>
-      <div id="controls">
-        <button id="button1">Go to store</button>
-        <button id="button2">Go to cave</button>
-        <button id="button3">Fight dragon</button>
+
+      <div id="game-info">
+        <div class="main-content-action">
+          <div class="main-content-image">
+            <img
+              class="town-square"
+              src="./assets/image/town_square.jpg"
+              alt="picture of town square"
+            />
+            <img
+              class="town-store"
+              src="./assets/image/town-tavern.png"
+              alt="inside of tavern"
+            />
+            <img
+              class="explore"
+              src="./assets/image/explore.png"
+              alt="exploring the woods"
+            />
+            <img
+              class="fighting"
+              src="./assets/image/fighting.jpg"
+              alt="exploring the woods"
+            />
+          </div>
+
+          <div id="controls">
+            <button id="button1">Go to store</button>
+            <button id="button2">Go to explore</button>
+            <button id="button3">Fight dragon</button>
+            <button id="button4">Inventory</button>
+          </div>
+        </div>
+        <div class="main-content-text">
+          <div id="monsterStats">
+            <span class="stat"
+              >Monster Name: <strong><span id="monsterName"></span></strong
+            ></span>
+            <span class="stat"
+              >Health: <strong><span id="monsterHealth"></span></strong
+            ></span>
+          </div>
+
+          <div id="text">
+            Welcome to Dragon Repeller. You must defeat the dragon that is
+            preventing people from leaving the town. You are in the town square.
+            Where do you want to go? Use the buttons above.
+          </div>
+        </div>
       </div>
-      <div id="monsterStats">
-        <span class="stat"
-          >Monster Name: <strong><span id="monsterName"></span></strong
-        ></span>
-        <span class="stat"
-          >Health: <strong><span id="monsterHealth"></span></strong
-        ></span>
-      </div>
-      <div id="text">
-        Welcome to Dragon Repeller. You must defeat the dragon that is
-        preventing people from leaving the town. You are in the town square.
-        Where do you want to go? Use the buttons above.
+
+      <div id="inventory">
+        <div class="inventory-description">
+          <p>Combat log:</p>
+        </div>
+        <div class="inventory-box"></div>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
