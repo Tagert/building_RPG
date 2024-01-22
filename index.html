@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>RPG - Dragon Repeller</title>
+    <title>RPG - Eldertree Chronicles</title>
+    <!-- Eldertree Chronicles: Shadows of the Sylvan Realm -->
   </head>
   <body>
     <div class="game-container">
@@ -19,8 +20,16 @@
 
         <div id="stats">
           <span class="stat"
-            >Health: <strong><span id="healthText">100</span></strong></span
-          >
+            >Health:
+            <strong
+              ><span class="health-text-bar">
+                <span class="health-text">
+                  <span id="healthText">100 </span>
+                  <span class="slash">/</span>
+                  <span id="maxHealthText">100</span>
+                </span>
+                <span class="moving-bar"></span></span></strong
+          ></span>
           <span class="stat"
             >Level: <strong><span id="levelText">1</span></strong></span
           >
@@ -62,7 +71,7 @@
             <button id="button1">Go to store</button>
             <button id="button2">Go to explore</button>
             <button id="button3">Fight dragon</button>
-            <button id="button4">Inventory</button>
+            <!-- <button id="button4">Inventory</button> -->
           </div>
         </div>
         <div class="main-content-text">
@@ -76,9 +85,11 @@
           </div>
 
           <div id="text">
-            Welcome to Dragon Repeller. You must defeat the dragon that is
-            preventing people from leaving the town. You are in the town square.
-            Where do you want to go? Use the buttons above.
+            Welcome to Sylvan Realm.</br> Embark on a quest through an ancient
+            forest, encountering mystical creatures, uncovering forgotten lore,
+            and facing the shadows that threaten the balance of the Sylvan
+            Realm. May your adventures be filled with magic and wonder in the
+            Eldertree Chronicles!
           </div>
         </div>
       </div>
@@ -93,3 +104,5 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+

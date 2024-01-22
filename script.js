@@ -1,9 +1,15 @@
 "use strict";
-
-let xp = 0;
+// stats variables
 let health = 100;
+let maxHealth = 100;
+let level = 1;
+let xp = 0;
 let gold = 50;
 let currentWeapon = 0;
+// action variables
+let fighting;
+let monsterHealth;
+let inventory = ["stick"];
 
 const weapons = [
   { name: "stick", power: 5 },
@@ -52,10 +58,10 @@ const locations = [
     name: "kill monster",
     "button text": [
       "Go to town square",
-      "Go to town square",
+      "Fight again! Another!",
       "Go to town square",
     ],
-    "button functions": [goTown, goTown, easterEgg],
+    "button functions": [goTown, fightSlime, easterEgg],
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
   },
   {
@@ -78,9 +84,6 @@ const locations = [
   },
 ];
 
-let fighting;
-let monsterHealth;
-let inventory = ["stick"];
 // buttons
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
@@ -90,7 +93,11 @@ const button4 = document.querySelector("#button4");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
+const maxHealthText = document.querySelector("#maxHealthText");
+const healthBar = document.querySelector(".moving-bar");
 const goldText = document.querySelector("#goldText");
+const levelText = document.querySelector("#levelText");
+// healthBar.style.width = "75%";
 // monsters stats
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
@@ -103,7 +110,8 @@ const fightingImage = document.querySelector(".fighting");
 // inventory
 const inventoryBoxElement = document.querySelector(".inventory-box");
 
-console.log();
+healthText.innerText = health;
+maxHealthText.innerText = maxHealth;
 
 function update(location) {
   monsterStats.style.display = "none";
@@ -132,15 +140,45 @@ function goStore() {
   fightingImage.style.display = "none";
 }
 
+function goCave() {
+  update(locations[2]);
+  squareImage.style.display = "none";
+  storeImage.style.display = "none";
+  exploreImage.style.display = "block";
+  fightingImage.style.display = "none";
+}
+
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.style.display = "block";
+  monsterName.innerText = monsters[fighting].name;
+  monsterHealthText.innerText = monsters[fighting].health;
+  squareImage.style.display = "none";
+  storeImage.style.display = "none";
+  exploreImage.style.display = "none";
+  fightingImage.style.display = "block";
+}
+
 function buyHealth() {
   if (gold >= 10) {
-    gold -= 10;
-    health += 10;
-    goldText.innerText = gold;
-    healthText.innerText = health;
+    if (health < maxHealth) {
+      if (maxHealth - health < 10 && maxHealth - health !== 10) {
+        health += maxHealth - health;
+        healthText.innerText = health;
+      } else {
+        health += 10;
+        healthText.innerText = health;
+        gold -= 10;
+        goldText.innerText = gold;
+      }
+    } else {
+      text.innerText = "Your health is already maxed out!";
+    }
   } else {
     text.innerText = "You do not have enough gold to buy health.";
   }
+  checkHealth();
 }
 
 function buyWeapon() {
@@ -182,26 +220,6 @@ function getInventory() {
   inventoryList.textContent = inventory;
 }
 
-function goCave() {
-  update(locations[2]);
-  squareImage.style.display = "none";
-  storeImage.style.display = "none";
-  exploreImage.style.display = "block";
-  fightingImage.style.display = "none";
-}
-
-function goFight() {
-  update(locations[3]);
-  monsterHealth = monsters[fighting].health;
-  monsterStats.style.display = "block";
-  monsterName.innerText = monsters[fighting].name;
-  monsterHealthText.innerText = monsters[fighting].health;
-  squareImage.style.display = "none";
-  storeImage.style.display = "none";
-  exploreImage.style.display = "none";
-  fightingImage.style.display = "block";
-}
-
 function fightSlime() {
   fighting = 0;
   goFight();
@@ -239,6 +257,7 @@ function attack() {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
   }
+  checkHealth();
 }
 
 function getMonsterAttackValue(level) {
@@ -260,7 +279,24 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
+  levelUp();
   update(locations[4]);
+}
+
+function levelUp() {
+  if (xp >= level * 4 + 2) {
+    level += 1;
+    maxHealth = Math.round(maxHealth * 1.2);
+    health = maxHealth;
+    healthText.innerText = health;
+    maxHealthText.innerText = maxHealth;
+    levelText.innerText = level;
+  }
+}
+
+function checkHealth() {
+  const healthPercent = (health * 100) / maxHealth;
+  healthBar.style.width = `${healthPercent}%`;
 }
 
 function lose() {
@@ -275,12 +311,16 @@ function restart() {
   xp = 0;
   xpText.innerText = xp;
   health = 100;
+  maxHealth = 100;
   healthText.innerText = health;
   gold = 50;
   goldText.innerText = gold;
+  level = 1;
+  levelText.innerText = level;
   currentWeapon = 0;
   inventory = ["stick"];
   goTown();
+  checkHealth();
 }
 
 function easterEgg() {
@@ -322,4 +362,4 @@ function pickEight() {
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
-button4.onclick = getInventory;
+// button4.onclick = getInventory;
