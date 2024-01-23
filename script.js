@@ -2,6 +2,8 @@
 // stats variables
 let health = 100;
 let maxHealth = 100;
+let stamina = 50;
+let maxStamina = 50;
 let level = 1;
 let xp = 0;
 let gold = 50;
@@ -94,7 +96,10 @@ const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const maxHealthText = document.querySelector("#maxHealthText");
-const healthBar = document.querySelector(".moving-bar");
+const staminaText = document.querySelector("#staminaText");
+const maxStaminaText = document.querySelector("#maxStaminaText");
+const healthBar = document.querySelector(".health-moving-bar");
+const staminaBar = document.querySelector(".stamina-moving-bar");
 const goldText = document.querySelector("#goldText");
 const levelText = document.querySelector("#levelText");
 // healthBar.style.width = "75%";
@@ -110,8 +115,8 @@ const fightingImage = document.querySelector(".fighting");
 // inventory
 const inventoryBoxElement = document.querySelector(".inventory-box");
 
-healthText.innerText = health;
-maxHealthText.innerText = maxHealth;
+// healthText.innerText = health;
+// maxHealthText.innerText = maxHealth;
 
 function update(location) {
   monsterStats.style.display = "none";
@@ -181,6 +186,27 @@ function buyHealth() {
   checkHealth();
 }
 
+function buyStamina() {
+  if (gold >= 10) {
+    if (stamina < maxHealth) {
+      if (maxHealth - stamina < 10 && maxHealth - stamina !== 10) {
+        stamina += maxHealth - stamina;
+        staminaText.innerText = stamina;
+      } else {
+        stamina += 10;
+        staminaText.innerText = stamina;
+        gold -= 10;
+        goldText.innerText = gold;
+      }
+    } else {
+      text.innerText = "Your health is already maxed out!";
+    }
+  } else {
+    text.innerText = "You do not have enough gold to buy health.";
+  }
+  checkStamina();
+}
+
 function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
@@ -240,6 +266,7 @@ function attack() {
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
+  stamina -= getMonsterStaminaConsumptionValue(monsters[fighting].level);
   if (isMonsterHit()) {
     monsterHealth -=
       weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
@@ -248,6 +275,7 @@ function attack() {
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
+  staminaText.innerText = stamina;
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
@@ -258,10 +286,16 @@ function attack() {
     currentWeapon--;
   }
   checkHealth();
+  checkStamina();
 }
 
 function getMonsterAttackValue(level) {
   const hit = level * 5 - Math.floor(Math.random() * xp);
+  return hit > 0 ? hit : 0;
+}
+
+function getMonsterStaminaConsumptionValue(level) {
+  const hit = level * 2 - Math.floor(Math.random() * xp);
   return hit > 0 ? hit : 0;
 }
 
@@ -286,17 +320,28 @@ function defeatMonster() {
 function levelUp() {
   if (xp >= level * 4 + 2) {
     level += 1;
+    levelText.innerText = level;
+
     maxHealth = Math.round(maxHealth * 1.2);
     health = maxHealth;
     healthText.innerText = health;
     maxHealthText.innerText = maxHealth;
-    levelText.innerText = level;
+
+    maxStamina = Math.round(maxStamina * 1.3);
+    stamina = maxStamina;
+    staminaText.innerText = stamina;
+    maxStaminaText.innerText = maxStamina;
   }
 }
 
 function checkHealth() {
   const healthPercent = (health * 100) / maxHealth;
   healthBar.style.width = `${healthPercent}%`;
+}
+
+function checkStamina() {
+  const staminaPercent = (health * 100) / maxHealth;
+  staminaBar.style.width = `${staminaPercent}%`;
 }
 
 function lose() {
@@ -313,6 +358,9 @@ function restart() {
   health = 100;
   maxHealth = 100;
   healthText.innerText = health;
+  stamina = 50;
+  maxStamina = 50;
+  staminaText.innerText = stamina;
   gold = 50;
   goldText.innerText = gold;
   level = 1;
@@ -321,6 +369,7 @@ function restart() {
   inventory = ["stick"];
   goTown();
   checkHealth();
+  checkStamina();
 }
 
 function easterEgg() {

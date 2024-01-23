@@ -72,35 +72,63 @@ button {
 .game-container #game-stats #stats .stat {
   padding: 0.3rem 0;
 }
-.game-container #game-stats #stats .health-text-bar {
+.game-container #game-stats #stats .health-text-bar,
+.game-container #game-stats #stats .stamina-text-bar {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0.2rem 0rem;
+  padding: 0.1rem 0rem;
   margin-top: 0.3rem;
   border: 1px solid black;
   border-radius: 0.3rem;
 }
-.game-container #game-stats #stats .health-text-bar .health-text {
+.game-container #game-stats #stats .health-text-bar .health-text,
+.game-container #game-stats #stats .health-text-bar .stamina-text,
+.game-container #game-stats #stats .stamina-text-bar .health-text,
+.game-container #game-stats #stats .stamina-text-bar .stamina-text {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.4rem;
   width: 100%;
 }
-.game-container #game-stats #stats .health-text-bar .health-text #healthText,
 .game-container #game-stats #stats .health-text-bar .health-text .slash,
-.game-container #game-stats #stats .health-text-bar .health-text #maxHealthText {
+.game-container #game-stats #stats .health-text-bar .health-text #healthText,
+.game-container #game-stats #stats .health-text-bar .health-text #maxHealthText,
+.game-container #game-stats #stats .health-text-bar .health-text #staminaText,
+.game-container #game-stats #stats .health-text-bar .health-text #maxStaminaText,
+.game-container #game-stats #stats .health-text-bar .stamina-text .slash,
+.game-container #game-stats #stats .health-text-bar .stamina-text #healthText,
+.game-container #game-stats #stats .health-text-bar .stamina-text #maxHealthText,
+.game-container #game-stats #stats .health-text-bar .stamina-text #staminaText,
+.game-container #game-stats #stats .health-text-bar .stamina-text #maxStaminaText,
+.game-container #game-stats #stats .stamina-text-bar .health-text .slash,
+.game-container #game-stats #stats .stamina-text-bar .health-text #healthText,
+.game-container #game-stats #stats .stamina-text-bar .health-text #maxHealthText,
+.game-container #game-stats #stats .stamina-text-bar .health-text #staminaText,
+.game-container #game-stats #stats .stamina-text-bar .health-text #maxStaminaText,
+.game-container #game-stats #stats .stamina-text-bar .stamina-text .slash,
+.game-container #game-stats #stats .stamina-text-bar .stamina-text #healthText,
+.game-container #game-stats #stats .stamina-text-bar .stamina-text #maxHealthText,
+.game-container #game-stats #stats .stamina-text-bar .stamina-text #staminaText,
+.game-container #game-stats #stats .stamina-text-bar .stamina-text #maxStaminaText {
   position: relative;
   z-index: 10;
 }
-.game-container #game-stats #stats .health-text-bar .moving-bar {
+.game-container #game-stats #stats .health-text-bar .health-moving-bar,
+.game-container #game-stats #stats .health-text-bar .stamina-moving-bar,
+.game-container #game-stats #stats .stamina-text-bar .health-moving-bar,
+.game-container #game-stats #stats .stamina-text-bar .stamina-moving-bar {
   position: absolute;
-  background-color: red;
+  background-color: #ef4444;
   width: 100%;
   height: 100%;
   border-radius: 0.3rem;
+}
+.game-container #game-stats #stats .health-text-bar .stamina-moving-bar,
+.game-container #game-stats #stats .stamina-text-bar .stamina-moving-bar {
+  background-color: #fecd01;
 }
 .game-container #game-info {
   max-width: 50rem;

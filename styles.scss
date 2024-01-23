@@ -75,37 +75,47 @@ button {
         padding: 0.3rem 0;
       }
 
-      .health-text-bar {
+      .health-text-bar,
+      .stamina-text-bar {
         position: relative;
         display: flex;
         align-items: center;
         width: 100%;
-        padding: 0.2rem 0rem;
+        padding: 0.1rem 0rem;
         margin-top: 0.3rem;
         border: 1px solid black;
         border-radius: 0.3rem;
 
-        .health-text {
+        .health-text,
+        .stamina-text {
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 0.4rem;
           width: 100%;
 
-          #healthText,
           .slash,
-          #maxHealthText {
+          #healthText,
+          #maxHealthText,
+          #staminaText,
+          #maxStaminaText {
             position: relative;
             z-index: 10;
           }
         }
 
-        .moving-bar {
+        .health-moving-bar,
+        .stamina-moving-bar {
           position: absolute;
-          background-color: red;
+          background-color: #ef4444;
           width: 100%;
           height: 100%;
           border-radius: 0.3rem;
+        }
+
+        .stamina-moving-bar {
+          background-color: #fecd01;
+          // width: 100%;
         }
       }
     }
