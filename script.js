@@ -29,23 +29,31 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to explore", "Fight dragon"],
+    "button text": [
+      "Mystic Oak Tavern",
+      "Explore the ancient forest",
+      "Fight dragon",
+    ],
     "button functions": [goStore, goCave, fightDragon],
-    text: 'You are in the town square. You see a sign that says "Store".',
+    text: 'You are in the Alderbrook town square. You see a sign that says "Store".',
   },
   {
     name: "store",
     "button text": [
       "Buy 10 health (10 gold)",
       "Buy weapon (30 gold)",
-      "Go to town square",
+      "Return to Alderbrook streets",
     ],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store.",
   },
   {
     name: "cave",
-    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button text": [
+      "Fight slime",
+      "Fight fanged beast",
+      "Return to Alderbrook",
+    ],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters.",
   },
@@ -59,9 +67,9 @@ const locations = [
   {
     name: "kill monster",
     "button text": [
-      "Go to town square",
+      "Return to Alderbrook",
       "Fight again! Another!",
-      "Go to town square",
+      "Mystery box.",
     ],
     "button functions": [goTown, fightSlime, easterEgg],
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
@@ -80,7 +88,7 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "Go to town square?"],
+    "button text": ["2", "8", "Return to Alderbrook?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
   },
@@ -91,6 +99,8 @@ const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
+const button5 = document.querySelector("#button5");
+const button6 = document.querySelector("#button6");
 // adventurer stats
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
@@ -102,17 +112,17 @@ const healthBar = document.querySelector(".health-moving-bar");
 const staminaBar = document.querySelector(".stamina-moving-bar");
 const goldText = document.querySelector("#goldText");
 const levelText = document.querySelector("#levelText");
-// healthBar.style.width = "75%";
 // monsters stats
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 // images
 const squareImage = document.querySelector(".town-square");
-const storeImage = document.querySelector(".town-store");
+const tavernImage = document.querySelector(".town-tavern");
 const exploreImage = document.querySelector(".explore");
 const fightingImage = document.querySelector(".fighting");
-// inventory
+// menus
+// const
 const inventoryBoxElement = document.querySelector(".inventory-box");
 
 // healthText.innerText = health;
@@ -131,8 +141,9 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+
   squareImage.style.display = "block";
-  storeImage.style.display = "none";
+  tavernImage.style.display = "none";
   exploreImage.style.display = "none";
   fightingImage.style.display = "none";
 }
@@ -140,7 +151,7 @@ function goTown() {
 function goStore() {
   update(locations[1]);
   squareImage.style.display = "none";
-  storeImage.style.display = "block";
+  tavernImage.style.display = "block";
   exploreImage.style.display = "none";
   fightingImage.style.display = "none";
 }
@@ -148,7 +159,7 @@ function goStore() {
 function goCave() {
   update(locations[2]);
   squareImage.style.display = "none";
-  storeImage.style.display = "none";
+  tavernImage.style.display = "none";
   exploreImage.style.display = "block";
   fightingImage.style.display = "none";
 }
@@ -160,7 +171,7 @@ function goFight() {
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsters[fighting].health;
   squareImage.style.display = "none";
-  storeImage.style.display = "none";
+  tavernImage.style.display = "none";
   exploreImage.style.display = "none";
   fightingImage.style.display = "block";
 }
@@ -411,4 +422,4 @@ function pickEight() {
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
-// button4.onclick = getInventory;
+button4.onclick = getInventory;

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@400;600;800&display=swap");
 *,
 *::before,
 *::after {
@@ -16,124 +17,150 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.88rem;
+  font-family: "Merienda", cursive;
   height: 100vh;
-  background-color: #0a0a23;
+  background-color: #b19470;
 }
 
 button {
-  width: 10rem;
+  width: 100%;
   height: 2rem;
   cursor: pointer;
   color: #0a0a23;
-  border: 3px solid #feac32;
+  border: 2px solid #76453b;
   border-radius: 0.4rem;
-  background-image: linear-gradient(#fecc4c, #ffac33);
+  background-image: linear-gradient(#f8fae5, #feac32);
   background-color: #feac32;
 }
 
 .game-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.game-container #game-stats {
-  max-width: 600px;
-  max-height: 600px;
+.game-container #infocards-container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 66rem;
+}
+.game-container #infocards-container .stats-containers {
+  display: flex;
+  align-self: flex-start;
+  gap: 1rem;
+  width: 500px;
+  max-height: 250px;
   padding: 1rem;
+  border: 2px solid black;
   border-radius: 0.5rem;
-  color: #ffffff;
   background-color: #ffffff;
 }
-.game-container #game-stats #adventurer {
+.game-container #infocards-container #gamer-stats #adventurer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.game-container #infocards-container #gamer-stats #adventurer .adventurer-description {
   color: black;
 }
-.game-container #game-stats #adventurer .adventurer-image {
+.game-container #infocards-container #gamer-stats #adventurer .adventurer-image {
   overflow: hidden;
   height: 10rem;
   width: 10rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  background-color: red;
+  border: 2px solid black;
   border-radius: 0.5rem;
 }
-.game-container #game-stats #adventurer .adventurer-image img {
+.game-container #infocards-container #gamer-stats #adventurer .adventurer-image img {
   -o-object-fit: cover;
      object-fit: cover;
+  opacity: 0.95;
 }
-.game-container #game-stats #stats {
+.game-container #infocards-container #gamer-stats #stats {
   display: flex;
   flex-direction: column;
-  border: 1px solid #0a0a23;
-  padding: 10px;
+  gap: 1rem;
+  min-width: 250px;
   border-radius: 0.5rem;
   color: #0a0a23;
 }
-.game-container #game-stats #stats .stat {
-  padding: 0.3rem 0;
+.game-container #infocards-container #gamer-stats #stats .stat {
+  padding: 0;
 }
-.game-container #game-stats #stats .health-text-bar,
-.game-container #game-stats #stats .stamina-text-bar {
+.game-container #infocards-container #gamer-stats #stats .main-life-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0.1rem 0rem;
-  margin-top: 0.3rem;
-  border: 1px solid black;
+  margin-top: 0.2rem;
+  border: 2px solid black;
   border-radius: 0.3rem;
 }
-.game-container #game-stats #stats .health-text-bar .health-text,
-.game-container #game-stats #stats .health-text-bar .stamina-text,
-.game-container #game-stats #stats .stamina-text-bar .health-text,
-.game-container #game-stats #stats .stamina-text-bar .stamina-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  width: 100%;
-}
-.game-container #game-stats #stats .health-text-bar .health-text .slash,
-.game-container #game-stats #stats .health-text-bar .health-text #healthText,
-.game-container #game-stats #stats .health-text-bar .health-text #maxHealthText,
-.game-container #game-stats #stats .health-text-bar .health-text #staminaText,
-.game-container #game-stats #stats .health-text-bar .health-text #maxStaminaText,
-.game-container #game-stats #stats .health-text-bar .stamina-text .slash,
-.game-container #game-stats #stats .health-text-bar .stamina-text #healthText,
-.game-container #game-stats #stats .health-text-bar .stamina-text #maxHealthText,
-.game-container #game-stats #stats .health-text-bar .stamina-text #staminaText,
-.game-container #game-stats #stats .health-text-bar .stamina-text #maxStaminaText,
-.game-container #game-stats #stats .stamina-text-bar .health-text .slash,
-.game-container #game-stats #stats .stamina-text-bar .health-text #healthText,
-.game-container #game-stats #stats .stamina-text-bar .health-text #maxHealthText,
-.game-container #game-stats #stats .stamina-text-bar .health-text #staminaText,
-.game-container #game-stats #stats .stamina-text-bar .health-text #maxStaminaText,
-.game-container #game-stats #stats .stamina-text-bar .stamina-text .slash,
-.game-container #game-stats #stats .stamina-text-bar .stamina-text #healthText,
-.game-container #game-stats #stats .stamina-text-bar .stamina-text #maxHealthText,
-.game-container #game-stats #stats .stamina-text-bar .stamina-text #staminaText,
-.game-container #game-stats #stats .stamina-text-bar .stamina-text #maxStaminaText {
-  position: relative;
-  z-index: 10;
-}
-.game-container #game-stats #stats .health-text-bar .health-moving-bar,
-.game-container #game-stats #stats .health-text-bar .stamina-moving-bar,
-.game-container #game-stats #stats .stamina-text-bar .health-moving-bar,
-.game-container #game-stats #stats .stamina-text-bar .stamina-moving-bar {
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .health-moving-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .stamina-moving-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .health-moving-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .stamina-moving-bar {
   position: absolute;
   background-color: #ef4444;
   width: 100%;
   height: 100%;
   border-radius: 0.3rem;
 }
-.game-container #game-stats #stats .health-text-bar .stamina-moving-bar,
-.game-container #game-stats #stats .stamina-text-bar .stamina-moving-bar {
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .health-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .stamina-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .health-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .stamina-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .health-bar span,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .stamina-bar span,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .health-bar span,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .stamina-bar span {
+  position: relative;
+  font-weight: 800;
+  z-index: 10;
+}
+.game-container #infocards-container #gamer-stats #stats .main-life-container .health-container-bar .stamina-moving-bar,
+.game-container #infocards-container #gamer-stats #stats .main-life-container .stamina-container-bar .stamina-moving-bar {
   background-color: #fecd01;
 }
+.game-container #infocards-container #gamer-stats #stats .description-stats {
+  display: flex;
+  gap: 2rem;
+}
+.game-container #infocards-container #gamer-stats #stats .description-stats .progress-stats,
+.game-container #infocards-container #gamer-stats #stats .description-stats .finance-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.game-container #infocards-container #gamer-stats #stats .description-stats .stat {
+  display: flex;
+  gap: 0.5rem;
+}
+.game-container #infocards-container #gamer-stats #stats .description-stats .stat span {
+  font-weight: 800;
+}
+.game-container #infocards-container #monsterStats {
+  padding: 0;
+}
 .game-container #game-info {
-  max-width: 50rem;
-  max-height: 40rem;
+  max-width: 66rem;
+  max-height: 45rem;
   padding: 1rem;
+  border: 2px solid black;
   border-radius: 0.5rem;
   color: #ffffff;
   background-color: #ffffff;
@@ -143,11 +170,11 @@ button {
   gap: 1rem;
   max-width: 100%;
   max-height: 100%;
-  padding-bottom: 1rem;
   color: #ffffff;
 }
 .game-container #game-info .main-content-action .main-content-image {
   overflow: hidden;
+  border: 2px solid black;
   border-radius: 0.5rem;
 }
 .game-container #game-info .main-content-action .main-content-image img {
@@ -157,7 +184,7 @@ button {
 .game-container #game-info .main-content-action .main-content-image .town-square {
   display: block;
 }
-.game-container #game-info .main-content-action .main-content-image .town-store {
+.game-container #game-info .main-content-action .main-content-image .town-tavern {
   display: none;
 }
 .game-container #game-info .main-content-action .main-content-image .explore {
@@ -169,22 +196,54 @@ button {
 .game-container #game-info .main-content-action #controls {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  gap: 2rem;
   width: 100%;
-  border: 1px solid #0a0a23;
-  padding: 5px;
+  border: 2px solid #0a0a23;
+  padding: 1rem;
   border-radius: 0.5rem;
   color: #0a0a23;
   background-color: #ffffff;
+}
+.game-container #game-info .main-content-action #controls .row {
+  display: flex;
+  min-width: 12rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+.game-container #game-info .main-content-action #controls #action-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.game-container #game-info .main-content-action #controls #action-menu .menu-description-section {
+  font-size: 1rem;
+}
+.game-container #game-info .main-content-action #controls #action-menu .menu-action-section {
+  display: flex;
+  gap: 1rem;
+}
+.game-container #game-info .main-content-action #controls #adventurer-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.game-container #game-info .main-content-action #controls #adventurer-menu .adventurer-description-section {
+  font-size: 1rem;
+}
+.game-container #game-info .main-content-action #controls #adventurer-menu .adventurer-action-section {
+  display: flex;
+  gap: 1rem;
 }
 .game-container #game-info .main-content-text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-bottom: 1rem;
 }
 .game-container #game-info .main-content-text #monsterStats {
   display: none;
-  border: 1px solid #0a0a23;
+  border: 2px solid #0a0a23;
   padding: 5px;
   border-radius: 0.5rem;
   color: #ffffff;
@@ -192,14 +251,19 @@ button {
 }
 .game-container #game-info .main-content-text #text {
   padding: 1rem;
+  border: 2px solid #0a0a23;
   border-radius: 0.5rem;
   color: #ffffff;
-  background-color: #0a0a23;
+  background-color: #b19470;
 }
 .game-container #inventory {
-  height: 330px;
-  width: 180px;
-  border-radius: 0.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 250px;
+  min-height: 500px;
   padding: 1rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
   background-color: #ffffff;
 }/*# sourceMappingURL=styles.css.map */
