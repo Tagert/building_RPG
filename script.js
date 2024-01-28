@@ -116,6 +116,7 @@ const levelText = document.querySelector("#levelText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const maxMonsterHealth = document.querySelector("#maxMonsterHealth");
 // images
 const squareImage = document.querySelector(".town-square");
 const tavernImage = document.querySelector(".town-tavern");
@@ -166,10 +167,17 @@ function goCave() {
 
 function goFight() {
   update(locations[3]);
+  const monsterNameNotModified = monsters[fighting].name;
+  console.log(monsterName);
+  const FirstLetterMonsterName = monsterNameNotModified.charAt(0).toUpperCase();
+  const remainingLetters = monsterNameNotModified.slice(1);
+  const fullMonsterName = FirstLetterMonsterName + remainingLetters;
   monsterHealth = monsters[fighting].health;
-  monsterStats.style.display = "block";
-  monsterName.innerText = monsters[fighting].name;
+  monsterStats.style.display = "flex";
+  monsterName.innerText = fullMonsterName;
   monsterHealthText.innerText = monsters[fighting].health;
+  maxMonsterHealth.innerText = monsters[fighting].health;
+  monsterLevelText.innerText = monsters[fighting].level;
   squareImage.style.display = "none";
   tavernImage.style.display = "none";
   exploreImage.style.display = "none";

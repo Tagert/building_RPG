@@ -23,7 +23,7 @@
       
           <div id="stats">
             <div class="adventurer-name">
-              <p id="adventureName">Tager</p>
+              <p id="adventurerName">Tager</p>
             </div>
       
             <div class="main-life-container">
@@ -81,41 +81,46 @@
         <div class="stats-containers" id="monsterStats">
           <div id="monster">
             <div class="monster-description">
-              <p>
-                <span>Monster Name: <span id="monsterName"></span></span>
-              </p>
+              <p>Monster Name :</p>
             </div>
-          
+        
             <div class="monster-image">
               <img src="" alt="" />
             </div>
           </div>
         
-          <div class="monster-life-container">
-            <div class="monster-stat">
-              <p>Health:</p>
-              <div class="monster-health-container-bar">
-                <div class="monster-health-bar">
-                  <p>
-                    <span id="monsterHealth">100</span>
-                    <span class="slash">/</span>
-                    <span id="maxmonsterHealth">100</span>
-                  </p>
+          <div class="monster-stats-info">
+            <div>
+              <p id="monsterName"></p>
+            </div>
+        
+            <div class="monster-life-container">
+              <div class="monster-stat">
+                <p>Health:</p>
+                <div class="monster-health-container-bar">
+                  <div class="monster-health-bar">
+                    <p>
+                      <span id="monsterHealth">100</span>
+                      <span class="slash">/</span>
+                      <span id="maxMonsterHealth">100</span>
+                    </p>
+                  </div>
+                  <div class="monster-health-moving-bar"></div>
                 </div>
-                <div class="monster-health-moving-bar"></div>
+              </div>
+            </div>
+        
+            <div class="monster-stats">
+              <div class="stat-card">
+                <p class="stat">Level: <span id="monsterLevelText">1</span></p>
+              </div>
+              <div class="stat-card">
+                <p class="stat">Type: <span id="monsterClassText">Regular</span></p>
               </div>
             </div>
           </div>
-    
-          <div class="monster-stats">
-            <div class="stat-card">
-              <p class="stat">Level:<span id="monsterLevelText">1</span></p>
-            </div>
-            <div class="stat-card">
-              <p class="stat">Class: <span id="monsterClassText">Regular</span></p>
-            </div>
         </div>
-        </div>
+        
       
         <!-- <div id="inventory">
           <div class="inventory-description">
@@ -126,17 +131,7 @@
       </div>
     
       <div id="game-info">
-        
         <div class="main-content-text">
-           <!-- <div id="monsterStats">
-            <span class="stat-card"
-              >Monster Name: <strong><span id="monsterName"></span></strong
-            ></span>
-            <span class="stat-card"
-              >Health: <strong><span id="monsterHealth"></span></strong
-            ></span>
-          </div>  -->
-    
           <div id="text">
             Welcome to Sylvan Realm.</br> Embark on a quest through an ancient
             forest, encountering mystical creatures, uncovering forgotten lore,
