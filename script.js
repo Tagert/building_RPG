@@ -21,9 +21,15 @@ const weapons = [
 ];
 
 const monsters = [
-  { name: "slime", level: 2, health: 15 },
-  { name: "fanged beast", level: 8, health: 60 },
-  { name: "dragon", level: 20, health: 300 },
+  { name: "slime", level: 2, health: 15, type: "Regular" },
+  { name: "fanged beast", level: 8, health: 60, type: "Regular" },
+  { name: "dragon", level: 20, health: 300, type: "Regular" },
+];
+
+const shopItems = [
+  { name: "Health Potion", price: 10, type: "health" },
+  { name: "Stamina Potion", price: 10, type: "stamina" },
+  { name: "Sword", price: 30, type: "weapon", power: 100 },
 ];
 
 const locations = [
@@ -35,7 +41,7 @@ const locations = [
       "Fight dragon",
     ],
     "button functions": [goStore, goCave, fightDragon],
-    text: 'You are in the Alderbrook town square. You see a sign that says "Store".',
+    text: "Welcome to the heart of Alderbrook, the bustling town square! Cobblestone streets weave through the center, adorned with vibrant market stalls and lively chatter. An ancient oak tree, its branches reaching towards the sky, stands proudly at the square's core, casting a cool shade on the gathering locals.",
   },
   {
     name: "store",
@@ -138,6 +144,12 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
+
+  // if (location.name === "store") {
+  //   text.innerText += "\nAvailable items in the shop:\n";
+  //   shopItems.forEach((item, index) => {
+  //     text.innerText += `${index + 1}. ${item.name} - ${item.price} gold\n`;
+  //   });
 }
 
 function goTown() {
@@ -259,10 +271,12 @@ function sellWeapon() {
 }
 
 function getInventory() {
+  inventoryBoxElement.innerHTML = "";
+
   const inventoryList = document.createElement("p");
   inventoryBoxElement.append(inventoryList);
-  console.log(inventoryBoxElement);
-  inventoryList.textContent = inventory;
+
+  inventoryList.textContent = "Inventory: " + inventory.join(", ");
 }
 
 function fightSlime() {
@@ -377,9 +391,11 @@ function restart() {
   health = 100;
   maxHealth = 100;
   healthText.innerText = health;
+  maxHealthText.innerText = maxHealth;
   stamina = 50;
   maxStamina = 50;
   staminaText.innerText = stamina;
+  maxStaminaText.innerText = maxStamina;
   gold = 50;
   goldText.innerText = gold;
   level = 1;
